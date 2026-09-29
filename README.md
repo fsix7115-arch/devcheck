@@ -1,10 +1,16 @@
 # devcheck
 
+[![CI](https://github.com/fsix7115-arch/devcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/fsix7115-arch/devcheck/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)](devcheck.py)
+[![Zero dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)](devcheck.py)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](test_devcheck.py)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 Find out whether your dev machine is actually healthy — or just whether the
 tools are installed.
 
 ```bash
-git clone https://github.com/ARYX/devcheck
+git clone https://github.com/fsix7115-arch/devcheck
 cd devcheck
 python3 devcheck.py
 ```
@@ -40,6 +46,12 @@ actually broken. `curl ... | bash` assumes the package manager works, and it
 tells you nothing about the four failure modes below. This checks instead of
 installs, because the interesting problems are the ones where a tool exists
 and lies to you.
+
+## What it looks like
+
+Real output from `python3 devcheck.py`:
+
+![devcheck demo](docs/demo.png)
 
 ## What it catches
 

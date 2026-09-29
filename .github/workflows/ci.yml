@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  self-test:
+    name: Self-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Self-tests
+        # No dependencies, no API key, no secrets — the suite is designed to run
+        # in CI exactly as it runs on a developer machine.
+        run: python3 test_devcheck.py
+
+      - name: Import check
+        run: python3 -c "import devcheck"
+
+      - name: Syntax check
+        run: python3 -m py_compile devcheck.py
